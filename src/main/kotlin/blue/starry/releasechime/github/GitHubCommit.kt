@@ -62,8 +62,7 @@ data class GitHubCommit(
         val committer: Committer,
         val message: String,
         val tree: Tree,
-        val url: String,
-        val verification: Verification
+        val url: String
     ) {
         @Serializable
         data class Author(
@@ -83,14 +82,6 @@ data class GitHubCommit(
         data class Tree(
             val sha: String,
             val url: String
-        )
-
-        @Serializable
-        data class Verification(
-            val payload: String,
-            val reason: String,
-            val signature: String,
-            val verified: Boolean
         )
     }
 

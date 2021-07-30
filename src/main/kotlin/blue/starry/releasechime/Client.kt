@@ -17,6 +17,7 @@ val AppHttpClient by lazy {
         install(JsonFeature) {
             serializer = KotlinxSerializer(Json {
                 ignoreUnknownKeys = true
+                coerceInputValues = true
             })
         }
 
