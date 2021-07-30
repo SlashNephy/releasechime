@@ -90,7 +90,9 @@ object GitHubWatcher {
             return
         }
 
-        notify(commit, repository, null)
+        if (lastId != null) {
+            notify(commit, repository, null)
+        }
 
         transaction(AppDatabase) {
             // update if exists
@@ -121,7 +123,9 @@ object GitHubWatcher {
             return
         }
 
-        notify(commit, repository, path)
+        if (lastId != null) {
+            notify(commit, repository, path)
+        }
 
         transaction(AppDatabase) {
             // update if exists
