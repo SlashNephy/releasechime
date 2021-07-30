@@ -144,19 +144,23 @@ object GitHubWatcher {
     }
 
     private suspend fun notify(release: GitHubRelease, repository: String) {
-        notifyToDiscordWebhook(release, repository)
+        for (webhookUrl in Env.DISCORD_WEBHOOK_URLS) {
+            notifyToDiscordWebhook(webhookUrl, release, repository)
+        }
     }
 
     private suspend fun notify(commit: GitHubCommit, repository: String, path: String?) {
-        notifyToDiscordWebhook(commit, repository, path)
+        for (webhookUrl in Env.DISCORD_WEBHOOK_URLS) {
+            notifyToDiscordWebhook(webhookUrl, commit, repository, path)
+        }
     }
 
-    private suspend fun notifyToDiscordWebhook(release: GitHubRelease, repository: String) {
+    private suspend fun notifyToDiscordWebhook(webhookUrl: String, release: GitHubRelease, repository: String) {
         if (release.assets.isEmpty()) {
             return
         }
 
-        AppHttpClient.post<Unit>(Env.DISCORD_WEBHOOK_URL) {
+        AppHttpClient.post<Unit>(webhookUrl) {
             contentType(ContentType.Application.Json)
 
             body = DiscordWebhookMessage(
@@ -190,8 +194,8 @@ object GitHubWatcher {
         }
     }
 
-    private suspend fun notifyToDiscordWebhook(commit: GitHubCommit, repository: String, path: String?) {
-        AppHttpClient.post<Unit>(Env.DISCORD_WEBHOOK_URL) {
+    private suspend fun notifyToDiscordWebhook(webhookUrl: String, commit: GitHubCommit, repository: String, path: String?) {
+        AppHttpClient.post<Unit>(webhookUrl) {
             contentType(ContentType.Application.Json)
 
             body = DiscordWebhookMessage(

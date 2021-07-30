@@ -3,7 +3,7 @@ package blue.starry.releasechime
 import kotlin.properties.ReadOnlyProperty
 
 object Env {
-    val DISCORD_WEBHOOK_URL by string
+    val DISCORD_WEBHOOK_URLS by stringList
     val INTERVAL_SEC by long { 1800 }
     val LOG_LEVEL by stringOrNull
     val GITHUB_TOKEN by string

@@ -43,8 +43,9 @@ services:
     environment:
       # 必須: GitHub Private Access Token
       GITHUB_TOKEN: xxx
-      # 必須: Discord Webhook URL
-      DISCORD_WEBHOOK_URL: https://discord.com/api/webhooks/xxx
+      # Discord Webhook URL (複数指定可能)
+      DISCORD_WEBHOOK_URLS: https://discord.com/api/webhooks/xxx
+      DISCORD_WEBHOOK_URLS2: https://discord.com/api/webhooks/xxx
 
       # チェック間隔 (秒)
       INTERVAL_SEC: 1800
