@@ -11,7 +11,7 @@
 [![issues](https://img.shields.io/github/issues/SlashNephy/releasechime)](https://github.com/SlashNephy/releasechime/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/SlashNephy/releasechime)](https://github.com/SlashNephy/releasechime/pulls)
 
-[![screenshot.png](https://i.imgur.com/S7zK0Kl.png)](https://github.com/SlashNephy/releasechime)
+[![screenshot.png](https://i.imgur.com/6pmT6U6.png)](https://github.com/SlashNephy/releasechime)
 
 ## Requirements
 
