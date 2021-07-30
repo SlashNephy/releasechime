@@ -27,14 +27,8 @@ private val stringList: ReadOnlyProperty<Env, List<String>>
         System.getenv(property.name)?.split(",").orEmpty()
     }
 
-private fun int(default: () -> Int): ReadOnlyProperty<Env, Int> {
-    return ReadOnlyProperty { _, property ->
-        System.getenv(property.name).toIntOrNull() ?: default()
-    }
-}
-
 private fun long(default: () -> Long): ReadOnlyProperty<Env, Long> {
     return ReadOnlyProperty { _, property ->
-        System.getenv(property.name).toLongOrNull() ?: default()
+        System.getenv(property.name)?.toLongOrNull() ?: default()
     }
 }
