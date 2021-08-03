@@ -24,7 +24,7 @@ private val stringOrNull: ReadOnlyProperty<Env, String?>
 
 private val stringList: ReadOnlyProperty<Env, List<String>>
     get() = ReadOnlyProperty { _, property ->
-        System.getenv(property.name)?.split(",").orEmpty()
+        System.getenv().filter { it.key.startsWith(property.name) }.values.toList()
     }
 
 private fun long(default: () -> Long): ReadOnlyProperty<Env, Long> {
