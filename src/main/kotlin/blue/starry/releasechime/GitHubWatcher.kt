@@ -11,6 +11,7 @@ import io.ktor.http.contentType
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
+import mu.KotlinLogging
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
@@ -19,6 +20,8 @@ import org.jetbrains.exposed.sql.update
 import java.time.OffsetDateTime
 
 object GitHubWatcher {
+    private val logger = KotlinLogging.create("App.Watcher")
+
     init {
         transaction(AppDatabase) {
             SchemaUtils.create(GitHubReleaseHistories)
@@ -54,7 +57,10 @@ object GitHubWatcher {
         }
 
         val release = GitHubApiClient.getLatestRelease(repository) ?: return
+        logger.trace { "Release: $release" }
+
         if (lastId == release.id) {
+            logger.trace { "Release: Last release id \"${lastId}\" is same to latest one. Skipping..." }
             return
         }
 
@@ -86,7 +92,10 @@ object GitHubWatcher {
         }
 
         val commit = GitHubApiClient.getLatestCommit(repository) ?: return
+        logger.trace { "Commit: $commit" }
+
         if (lastId == commit.sha) {
+            logger.trace { "Commit: Last commit sha \"${lastId}\" is same to latest one. Skipping..." }
             return
         }
 
@@ -119,7 +128,10 @@ object GitHubWatcher {
         val (repository, path) = target.split(',', limit = 2)
 
         val commit = GitHubApiClient.getLatestPathCommit(repository, path) ?: return
+        logger.trace { "PathCommit: $commit" }
+
         if (lastId == commit.sha) {
+            logger.trace { "PathCommit: Last commit sha \"${lastId}\" is same to latest one. Skipping..." }
             return
         }
 
@@ -157,6 +169,7 @@ object GitHubWatcher {
 
     private suspend fun notifyToDiscordWebhook(webhookUrl: String, release: GitHubRelease, repository: String) {
         if (release.assets.isEmpty()) {
+            logger.trace { "This release has no assets. Skipping..." }
             return
         }
 
