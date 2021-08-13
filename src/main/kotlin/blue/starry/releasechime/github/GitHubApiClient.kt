@@ -18,7 +18,14 @@ object GitHubApiClient {
     }
 
     private suspend fun getCommits(repository: String, count: Int): List<GitHubCommit> {
-        return AppHttpClient.get("https://api.github.com/repos/${repository}/commits?per_page=${count}") {
+        val url = if (':' in repository) {
+            val (repo, branch) = repository.split(':', limit = 2)
+            "https://api.github.com/repos/${repo}/commits?sha=${branch}&per_page=${count}"
+        } else {
+            "https://api.github.com/repos/${repository}/commits?per_page=${count}"
+        }
+
+        return AppHttpClient.get(url) {
             header(HttpHeaders.Authorization, "token ${Env.GITHUB_TOKEN}")
         }
     }
@@ -28,7 +35,14 @@ object GitHubApiClient {
     }
 
     private suspend fun getPathCommits(repository: String, path: String, count: Int): List<GitHubCommit> {
-        return AppHttpClient.get("https://api.github.com/repos/${repository}/commits?path=${path}&per_page=${count}") {
+        val url = if (':' in repository) {
+            val (repo, branch) = repository.split(':', limit = 2)
+            "https://api.github.com/repos/${repo}/commits?sha=${branch}&path=${path}&per_page=${count}"
+        } else {
+            "https://api.github.com/repos/${repository}/commits?path=${path}&per_page=${count}"
+        }
+
+        return AppHttpClient.get(url) {
             header(HttpHeaders.Authorization, "token ${Env.GITHUB_TOKEN}")
         }
     }

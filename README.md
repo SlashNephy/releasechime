@@ -53,7 +53,7 @@ services:
       LOG_LEVEL: 'TRACE'
 
       # リリースを監視したい対象のリポジトリ (複数指定可能)
-      TARGET_RELEASE_REPOSITORIES: 'SlashNephy/saya'
+      TARGET_RELEASE_REPOSITORIES: 'SlashNephy/saya:dev'
       TARGET_RELEASE_REPOSITORIES2: 'mirakc/mirakc'
       # コミットを監視したい対象のリポジトリ (複数指定可能)
       TARGET_COMMIT_REPOSITORIES: 'DBCTRADO/TVTest'
