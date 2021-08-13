@@ -53,13 +53,13 @@ services:
       LOG_LEVEL: 'TRACE'
 
       # リリースを監視したい対象のリポジトリ (複数指定可能)
-      TARGET_RELEASE_REPOSITORIES: 'SlashNephy/saya:dev'
+      TARGET_RELEASE_REPOSITORIES: 'SlashNephy/saya'
       TARGET_RELEASE_REPOSITORIES2: 'mirakc/mirakc'
-      # コミットを監視したい対象のリポジトリ (複数指定可能)
+      # コミットを監視したい対象のリポジトリ (複数指定可能, ブランチ指定可能)
       TARGET_COMMIT_REPOSITORIES: 'DBCTRADO/TVTest'
-      # コミットを監視したい対象のリポジトリ (複数指定可能)
+      # コミットを監視したい対象のリポジトリ (複数指定可能, ブランチ指定可能)
       # 指定されたパスを含む変更のみ通知される
-      TARGET_PATH_COMMIT_REPOSITORIES: 'l3tnun/EPGStation,doc'  # l3tnun/EPGStation の doc 以下の変更のみ通知
+      TARGET_PATH_COMMIT_REPOSITORIES: 'l3tnun/EPGStation:v2,doc'  # l3tnun/EPGStation の doc 以下の変更のみ通知
 
 volumes:
   data:
