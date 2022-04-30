@@ -9,7 +9,7 @@ RUN gradle shadowJar --parallel --console=verbose
 FROM eclipse-temurin:17.0.3_7-jdk as build-jre
 
 RUN $JAVA_HOME/bin/jlink \
-    --add-modules java.base \
+    --add-modules java.base,java.sql,java.xml,java.naming \
     --strip-debug \
     --no-man-pages \
     --no-header-files \
