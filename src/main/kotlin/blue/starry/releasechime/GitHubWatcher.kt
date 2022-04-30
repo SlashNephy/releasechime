@@ -6,7 +6,6 @@ import blue.starry.releasechime.github.GitHubApiClient
 import blue.starry.releasechime.github.GitHubCommit
 import blue.starry.releasechime.github.GitHubRelease
 import io.ktor.client.request.post
-import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import kotlinx.coroutines.coroutineScope
@@ -174,10 +173,10 @@ object GitHubWatcher {
             return
         }
 
-        AppHttpClient.post(webhookUrl) {
+        AppHttpClient.post<Unit>(webhookUrl) {
             contentType(ContentType.Application.Json)
 
-            setBody(DiscordWebhookMessage(
+            body = DiscordWebhookMessage(
                 embeds = listOf(
                     DiscordEmbed(
                         author = DiscordEmbed.Author(
@@ -204,15 +203,15 @@ object GitHubWatcher {
                         timestamp = OffsetDateTime.parse(release.publishedAt).toZonedDateTime()
                     )
                 )
-            ))
+            )
         }
     }
 
     private suspend fun notifyToDiscordWebhook(webhookUrl: String, commit: GitHubCommit, repository: String, path: String?) {
-        AppHttpClient.post(webhookUrl) {
+        AppHttpClient.post<Unit>(webhookUrl) {
             contentType(ContentType.Application.Json)
 
-            setBody(DiscordWebhookMessage(
+            body = DiscordWebhookMessage(
                 embeds = listOf(
                     DiscordEmbed(
                         author = DiscordEmbed.Author(
@@ -226,7 +225,7 @@ object GitHubWatcher {
                         timestamp = OffsetDateTime.parse(commit.commit.author.date).toZonedDateTime()
                     )
                 )
-            ))
+            )
         }
     }
 }

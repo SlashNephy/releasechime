@@ -9,17 +9,13 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-client-cio:2.0.1")
-    implementation("io.ktor:ktor-client-content-negotiation:2.0.1")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation("io.ktor:ktor-client-java:1.6.8")
+    implementation("io.ktor:ktor-client-serialization:1.6.8")
 
-    implementation("org.jetbrains.exposed:exposed-core:0.38.2")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.38.2")
     implementation("org.xerial:sqlite-jdbc:3.36.0.3")
 
     implementation("io.github.microutils:kotlin-logging:2.1.21")
-    implementation("ch.qos.logback:logback-core:1.2.11")
     implementation("ch.qos.logback:logback-classic:1.2.11")
 }
 

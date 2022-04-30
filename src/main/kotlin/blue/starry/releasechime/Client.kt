@@ -1,10 +1,10 @@
 package blue.starry.releasechime
 
 import io.ktor.client.HttpClient
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.features.defaultRequest
+import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.http.userAgent
-import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.TransactionManager
@@ -14,8 +14,8 @@ import java.sql.Connection
 
 val AppHttpClient by lazy {
     HttpClient {
-        install(ContentNegotiation) {
-            json(Json {
+        install(JsonFeature) {
+            serializer = KotlinxSerializer(Json {
                 ignoreUnknownKeys = true
                 coerceInputValues = true
             })
