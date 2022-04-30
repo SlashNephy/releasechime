@@ -219,7 +219,7 @@ object GitHubWatcher {
                             url = commit.author.htmlUrl,
                             iconUrl = commit.author.avatarUrl
                         ),
-                        title = "[$repository] New commits for ${path ?: "anything"}",
+                        title = if (path != null) "[$repository] New commits in $path" else "[$repository] New commits",
                         url = commit.htmlUrl,
                         description = commit.commit.message,
                         timestamp = OffsetDateTime.parse(commit.commit.author.date).toZonedDateTime()
