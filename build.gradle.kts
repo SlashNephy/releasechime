@@ -10,7 +10,7 @@ repositories {
 
 dependencies {
     implementation("io.ktor:ktor-client-cio:1.6.2")
-    implementation("io.ktor:ktor-client-serialization:1.6.2")
+    implementation("io.ktor:ktor-client-serialization:1.6.8")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 
     implementation("org.jetbrains.exposed:exposed-core:0.32.1")
