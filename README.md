@@ -2,7 +2,7 @@
 
 🔔 Simple GitHub releases &amp; commits notifier which supports Discord Webhook
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.5-blue)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.6-blue)](https://kotlinlang.org)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/SlashNephy/releasechime)](https://github.com/SlashNephy/releasechime/releases)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/SlashNephy/releasechime/Docker)](https://hub.docker.com/r/slashnephy/releasechime)
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/slashnephy/releasechime/latest)](https://hub.docker.com/r/slashnephy/releasechime)
@@ -15,7 +15,7 @@
 
 ## Requirements
 
-- Java 11 or later
+- Java 17 or newer
 
 ## Docker
 

@@ -3,10 +3,12 @@ package blue.starry.releasechime
 import kotlinx.coroutines.delay
 import mu.KotlinLogging
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
 private val logger = KotlinLogging.create("app")
 
+@OptIn(ExperimentalTime::class)
 suspend fun main() {
     logger.info { "Application started!" }
 
