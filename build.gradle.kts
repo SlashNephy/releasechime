@@ -1,36 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.5.20"
-    kotlin("plugin.serialization") version "1.5.20"
+    kotlin("jvm") version "1.6.21"
+    kotlin("plugin.serialization") version "1.6.21"
     id("com.github.johnrengelman.shadow") version "7.0.0"
-}
-
-object Versions {
-    const val Ktor = "1.6.2"
-    const val KotlinxSerializationJson = "1.2.2"
-
-    const val Exposed = "0.32.1"
-    const val SQLiteJDBC = "3.36.0.1"
-
-    const val KotlinLogging = "2.0.10"
-    const val Logback = "1.2.3"
-}
-
-object Libraries {
-    const val KtorClientCIO = "io.ktor:ktor-client-cio:${Versions.Ktor}"
-    const val KtorClientSerialization = "io.ktor:ktor-client-serialization:${Versions.Ktor}"
-    const val KotlinxSerializationJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KotlinxSerializationJson}"
-
-    const val ExposedCore = "org.jetbrains.exposed:exposed-core:${Versions.Exposed}"
-    const val ExposedJDBC = "org.jetbrains.exposed:exposed-jdbc:${Versions.Exposed}"
-    const val SqliteJDBC = "org.xerial:sqlite-jdbc:${Versions.SQLiteJDBC}"
-
-    const val KotlinLogging = "io.github.microutils:kotlin-logging:${Versions.KotlinLogging}"
-    const val LogbackCore = "ch.qos.logback:logback-core:${Versions.Logback}"
-    const val LogbackClassic = "ch.qos.logback:logback-classic:${Versions.Logback}"
-
-    val ExperimentalAnnotations = setOf(
-        "kotlin.time.ExperimentalTime"
-    )
 }
 
 repositories {
@@ -38,17 +9,17 @@ repositories {
 }
 
 dependencies {
-    implementation(Libraries.KtorClientCIO)
-    implementation(Libraries.KtorClientSerialization)
-    implementation(Libraries.KotlinxSerializationJson)
+    implementation("io.ktor:ktor-client-cio:1.6.2")
+    implementation("io.ktor:ktor-client-serialization:1.6.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 
-    implementation(Libraries.ExposedCore)
-    implementation(Libraries.ExposedJDBC)
-    implementation(Libraries.SqliteJDBC)
+    implementation("org.jetbrains.exposed:exposed-core:0.32.1")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.32.1")
+    implementation("org.xerial:sqlite-jdbc:3.36.0.1")
 
-    implementation(Libraries.KotlinLogging)
-    implementation(Libraries.LogbackCore)
-    implementation(Libraries.LogbackClassic)
+    implementation("io.github.microutils:kotlin-logging:2.0.10")
+    implementation("ch.qos.logback:logback-core:1.2.3")
+    implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
 kotlin {
@@ -67,7 +38,9 @@ kotlin {
     sourceSets.all {
         languageSettings.progressiveMode = true
 
-        Libraries.ExperimentalAnnotations.forEach {
+        setOf(
+            "kotlin.time.ExperimentalTime"
+        ).forEach {
             languageSettings.useExperimentalAnnotation(it)
         }
     }
