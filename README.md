@@ -21,11 +21,9 @@
 
 There are some images.
 
-- `slashnephy/releasechime:latest`  
+- `ghcr.io/slashnephy/releasechime:latest`  
   Automatically published every push to `master` branch.
-- `slashnephy/releasechime:dev`  
-  Automatically published every push to `dev` branch.
-- `slashnephy/releasechime:<version>`  
+- `ghcr.io/slashnephy/releasechime:<version>`  
   Coresponding to release tags on GitHub.
 
 `docker-compose.yml`
@@ -36,7 +34,7 @@ version: '3.8'
 services:
   releasechime:
     container_name: releasechime
-    image: slashnephy/releasechime:latest
+    image: ghcr.io/slashnephy/releasechime
     restart: always
     volumes:
       - data:/app/data
