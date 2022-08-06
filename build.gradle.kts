@@ -12,7 +12,7 @@ dependencies {
     implementation("io.ktor:ktor-client-java:1.6.8")
     implementation("io.ktor:ktor-client-serialization:1.6.8")
 
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.38.2")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.39.2")
     implementation("org.xerial:sqlite-jdbc:3.36.0.3")
 
     implementation("io.github.microutils:kotlin-logging:2.1.23")
