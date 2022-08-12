@@ -1,4 +1,4 @@
-FROM gradle:7.5.0-jdk17 AS cache-deps
+FROM gradle:7.5.1-jdk17 AS cache-deps
 WORKDIR /app
 ENV GRADLE_USER_HOME /app/gradle
 
@@ -6,7 +6,7 @@ COPY *.gradle.kts gradle.properties /app/
 
 RUN gradle shadowJar --parallel --console=verbose
 
-FROM gradle:7.5.0-jdk17 AS build-app
+FROM gradle:7.5.1-jdk17 AS build-app
 WORKDIR /app
 
 COPY --from=cache-deps /app/gradle/ /home/gradle/.gradle/
