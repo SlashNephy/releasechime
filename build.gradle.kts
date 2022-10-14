@@ -16,7 +16,7 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.39.3.0")
 
     implementation("io.github.microutils:kotlin-logging:2.1.23")
-    implementation("ch.qos.logback:logback-classic:1.4.3")
+    implementation("ch.qos.logback:logback-classic:1.4.4")
 }
 
 kotlin {
