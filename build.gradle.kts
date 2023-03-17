@@ -9,8 +9,8 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-client-java:1.6.8")
-    implementation("io.ktor:ktor-client-serialization:1.6.8")
+    implementation("io.ktor:ktor-client-java:2.2.4")
+    implementation("io.ktor:ktor-client-serialization:2.2.4")
 
     implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1")
     implementation("org.xerial:sqlite-jdbc:3.40.0.0")
