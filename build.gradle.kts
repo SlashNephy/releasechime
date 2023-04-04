@@ -9,8 +9,9 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-client-java:1.6.8")
-    implementation("io.ktor:ktor-client-serialization:1.6.8")
+    implementation("io.ktor:ktor-client-java:2.2.4")
+    implementation("io.ktor:ktor-client-content-negotiation:2.2.4")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.2.4")
 
     implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1")
     implementation("org.xerial:sqlite-jdbc:3.41.2.1")
@@ -24,8 +25,8 @@ kotlin {
         compilations.all {
             kotlinOptions {
                 jvmTarget = JavaVersion.VERSION_17.toString()
-                apiVersion = "1.6"
-                languageVersion = "1.6"
+                apiVersion = "1.8"
+                languageVersion = "1.8"
                 verbose = true
             }
         }

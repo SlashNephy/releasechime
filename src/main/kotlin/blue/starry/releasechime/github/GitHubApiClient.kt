@@ -2,15 +2,17 @@ package blue.starry.releasechime.github
 
 import blue.starry.releasechime.AppHttpClient
 import blue.starry.releasechime.Env
+import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.http.HttpHeaders
 
 object GitHubApiClient {
     private suspend fun getReleases(repository: String, count: Int): List<GitHubRelease> {
-        return AppHttpClient.get("https://api.github.com/repos/${repository}/releases?per_page=${count}") {
+        val response = AppHttpClient.get("https://api.github.com/repos/${repository}/releases?per_page=${count}") {
             header(HttpHeaders.Authorization, "token ${Env.GITHUB_TOKEN}")
         }
+        return response.body()
     }
 
     suspend fun getLatestRelease(repository: String): GitHubRelease? {
@@ -25,9 +27,10 @@ object GitHubApiClient {
             "https://api.github.com/repos/${repository}/commits?per_page=${count}"
         }
 
-        return AppHttpClient.get(url) {
+        val response = AppHttpClient.get(url) {
             header(HttpHeaders.Authorization, "token ${Env.GITHUB_TOKEN}")
         }
+        return response.body()
     }
 
     suspend fun getLatestCommit(repository: String): GitHubCommit? {
@@ -42,9 +45,10 @@ object GitHubApiClient {
             "https://api.github.com/repos/${repository}/commits?path=${path}&per_page=${count}"
         }
 
-        return AppHttpClient.get(url) {
+        val response = AppHttpClient.get(url) {
             header(HttpHeaders.Authorization, "token ${Env.GITHUB_TOKEN}")
         }
+        return response.body()
     }
 
     suspend fun getLatestPathCommit(repository: String, path: String): GitHubCommit? {
