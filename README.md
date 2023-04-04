@@ -2,11 +2,7 @@
 
 🔔 Simple GitHub releases &amp; commits notifier which supports Discord Webhook
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.6-blue)](https://kotlinlang.org)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/SlashNephy/releasechime)](https://github.com/SlashNephy/releasechime/releases)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/SlashNephy/releasechime/Docker)](https://hub.docker.com/r/slashnephy/releasechime)
-[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/slashnephy/releasechime/latest)](https://hub.docker.com/r/slashnephy/releasechime)
-[![Docker Pulls](https://img.shields.io/docker/pulls/slashnephy/releasechime)](https://hub.docker.com/r/slashnephy/releasechime)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.x-blue)](https://kotlinlang.org)
 [![license](https://img.shields.io/github/license/SlashNephy/releasechime)](https://github.com/SlashNephy/releasechime/blob/master/LICENSE)
 [![issues](https://img.shields.io/github/issues/SlashNephy/releasechime)](https://github.com/SlashNephy/releasechime/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/SlashNephy/releasechime)](https://github.com/SlashNephy/releasechime/pulls)
@@ -19,13 +15,6 @@
 
 ## Docker
 
-There are some images.
-
-- `ghcr.io/slashnephy/releasechime:latest`  
-  Automatically published every push to `master` branch.
-- `ghcr.io/slashnephy/releasechime:<version>`  
-  Coresponding to release tags on GitHub.
-
 `docker-compose.yml`
 
 ```yaml
@@ -33,8 +22,7 @@ version: '3.8'
 
 services:
   releasechime:
-    container_name: releasechime
-    image: ghcr.io/slashnephy/releasechime
+    image: ghcr.io/slashnephy/releasechime:master
     restart: always
     volumes:
       - data:/app/data
