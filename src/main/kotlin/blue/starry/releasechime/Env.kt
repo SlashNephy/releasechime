@@ -10,6 +10,7 @@ object Env {
     val TARGET_RELEASE_REPOSITORIES by stringList
     val TARGET_COMMIT_REPOSITORIES by stringList
     val TARGET_PATH_COMMIT_REPOSITORIES by stringList
+    val CACHE_DIR by stringOrNull
 }
 
 private val string: ReadOnlyProperty<Env, String>

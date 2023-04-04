@@ -30,7 +30,7 @@ val AppHttpClient by lazy {
 val AppDatabase by lazy {
     TransactionManager.manager.defaultIsolationLevel = Connection.TRANSACTION_SERIALIZABLE
 
-    Files.createDirectories(Paths.get("data"))
-
-    Database.connect("jdbc:sqlite:data/database.db", "org.sqlite.JDBC")
+    val dbPath = Paths.get(Env.CACHE_DIR ?: "data", "database.db")
+    Files.createDirectories(dbPath.parent)
+    Database.connect("jdbc:sqlite:$dbPath", "org.sqlite.JDBC")
 }
