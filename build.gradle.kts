@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
-    kotlin("jvm") version "1.8.22"
-    kotlin("plugin.serialization") version "1.8.22"
+    kotlin("jvm") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
@@ -9,6 +12,8 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib"))
+
     implementation("io.ktor:ktor-client-java:2.3.3")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.3")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.3")
@@ -22,19 +27,11 @@ dependencies {
 
 kotlin {
     target {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_17.toString()
-                apiVersion = "1.8"
-                languageVersion = "1.8"
-                verbose = true
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+            apiVersion.set(KotlinVersion.KOTLIN_1_9)
+            languageVersion.set(KotlinVersion.KOTLIN_1_9)
         }
-    }
-
-    sourceSets.all {
-        languageSettings.progressiveMode = true
-        languageSettings.optIn("kotlin.RequiresOptIn")
     }
 }
 
