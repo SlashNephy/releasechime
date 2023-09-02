@@ -14,9 +14,9 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
 
-    implementation("io.ktor:ktor-client-java:2.3.3")
-    implementation("io.ktor:ktor-client-content-negotiation:2.3.3")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.3")
+    implementation("io.ktor:ktor-client-java:2.3.4")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
 
     implementation("org.jetbrains.exposed:exposed-jdbc:0.43.0")
     implementation("org.xerial:sqlite-jdbc:3.43.0.0")
