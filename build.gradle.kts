@@ -19,7 +19,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
 
     implementation("org.jetbrains.exposed:exposed-jdbc:0.43.0")
-    implementation("org.xerial:sqlite-jdbc:3.43.0.0")
+    implementation("org.xerial:sqlite-jdbc:3.43.2.2")
 
     implementation("io.github.microutils:kotlin-logging:3.0.5")
     implementation("ch.qos.logback:logback-classic:1.4.11")
