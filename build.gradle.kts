@@ -18,7 +18,7 @@ dependencies {
     implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
 
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.43.0")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.55.0")
     implementation("org.xerial:sqlite-jdbc:3.43.0.0")
 
     implementation("io.github.microutils:kotlin-logging:3.0.5")
