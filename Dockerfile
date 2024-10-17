@@ -15,7 +15,7 @@ COPY src/main/ /app/src/main/
 
 RUN gradle shadowJar --parallel --console=verbose
 
-FROM amazoncorretto:18.0.2@sha256:1128cff77f7fb4512215a4ded2bf0a6ec3cd2bf0f414a72136b1bb1d5f6b0518 as runtime
+FROM amazoncorretto:21.0.5@sha256:1ecf7a5a18a91c49286b494ef35813349655fb821743f067e0b36c4d94d18371 as runtime
 WORKDIR /app
 
 COPY --from=build-app /app/build/libs/releasechime-all.jar /app/releasechime.jar
